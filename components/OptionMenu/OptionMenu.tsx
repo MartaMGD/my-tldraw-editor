@@ -1,29 +1,43 @@
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuList, NavigationMenuTrigger } from "@radix-ui/react-navigation-menu"
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@radix-ui/react-navigation-menu';
+import { Button } from '../ui/button';
 
+interface OptionMenuProps {
+  handleSave: () => void;
+  handleLoad: () => void;
+  isLoading?: boolean;
+}
 
-export default function OptionMenu() {
+export default function OptionMenu({ handleSave, handleLoad, isLoading }: OptionMenuProps) {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
+    <NavigationMenu className="relative z-2 left-90 top-0 cursor-pointer">
+      <NavigationMenuList className="flex">
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Options</NavigationMenuTrigger>
-          <NavigationMenuContent className="w-48">
-            <div className="flex flex-col space-y-1 p-2">
-              <button
-          
-                className="px-3 py-2 rounded hover:bg-gray-100 text-sm text-gray-700 text-left"
+          <NavigationMenuTrigger asChild>
+            <Button variant="outline">Options</Button>
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="w-36 bg-white border rounded shadow-md p-1">
+            <div className="flex flex-col space-y-1">
+              <Button
+                onClick={handleSave}
+                disabled={isLoading}
+                variant="ghost"
+                className="text-left cursor-pointer"
               >
                 Save
-              </button>
-              <button
-                className="px-3 py-2 rounded hover:bg-gray-100 text-sm text-gray-700 text-left"
-              >
+              </Button>
+              <Button onClick={handleLoad} variant="ghost" className="text-left cursor-pointer">
                 Load
-              </button>
+              </Button>
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }

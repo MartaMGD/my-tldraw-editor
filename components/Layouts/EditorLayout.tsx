@@ -1,20 +1,26 @@
-import {  ReactNode } from 'react';
-import { Tldraw } from 'tldraw';
+import { ReactNode } from 'react';
 import OptionMenu from '../OptionMenu/OptionMenu';
 
-export default function EditorLayout({ children }: { children?: ReactNode }) {
-  return (
-    <div className="flex h-screen">
-      <aside className="w-48 p-4">
-        <OptionMenu/>
-      </aside>
+interface EditorLayoutProps {
+  children: ReactNode;
+  handleSave: () => void;
+  handleLoad: () => void;
+  isLoading?: boolean;
+}
 
-      <main className="flex-1 relative">
-        <div style={{ position: 'fixed', inset: 0, left: '192px' }}>
-          <Tldraw/>
-        </div>
-        {children}
-      </main>
-    </div>
+export default function EditorLayout({
+  children,
+  handleSave,
+  handleLoad,
+  isLoading,
+}: EditorLayoutProps) {
+  return (
+    <>
+      <header className=" border-b bg-white shadow-sm flex justify-start">
+        <OptionMenu handleSave={handleSave} handleLoad={handleLoad} isLoading={isLoading} />
+      </header>
+
+      <main className="flex-1 relative overflow-hidden">{children}</main>
+    </>
   );
 }
