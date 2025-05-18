@@ -3,11 +3,10 @@
 import EditorLayout from '@/components/Layouts/EditorLayout';
 import { Tldraw, Editor } from 'tldraw';
 import 'tldraw/tldraw.css';
-
 import { trpc } from '@/app/api/trpc/_trpc/client';
 import { useRef, useCallback, useEffect } from 'react';
 import { LoadingPage } from '@/components/LoadingPage/LoadingPage';
-import { randomizeColor } from '../utils/randomizeColor';
+import { randomizeProps } from '../utils/randomizeProps';
 
 export default function EditorPage() {
   const { data: snapshot, isLoading } = trpc.drawing.getDrawing.useQuery();
@@ -41,14 +40,18 @@ export default function EditorPage() {
 
     const selectedShapes = editor.getSelectedShapes();
     if (selectedShapes.length === 0) return;
+    console.log(selectedShapes);
 
     editor.run(() => {
       selectedShapes.forEach((shape) => {
-        const randomColor = randomizeColor();
+        const randomColor = randomizeProps.color();
+        const randomShape = randomizeProps.geoShape();
+
         editor.updateShapes([
           {
             id: shape.id,
-            type: shape.type,
+            type: shape.type === 'geo' ? 'geo' : 'draw',
+
             x: shape.x,
             y: shape.y,
             rotation: shape.rotation,
@@ -57,6 +60,7 @@ export default function EditorPage() {
               color: randomColor,
               fill: 'solid',
               dash: 'draw',
+              ...(shape.type === 'geo' ? { geo: randomShape } : {}),
             },
           },
         ]);
