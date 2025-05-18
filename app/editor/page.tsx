@@ -4,12 +4,16 @@ import EditorLayout from '@/components/Layouts/EditorLayout';
 import { Tldraw, Editor } from 'tldraw';
 import 'tldraw/tldraw.css';
 import { trpc } from '@/app/api/trpc/_trpc/client';
-import { useRef, useCallback, useEffect } from 'react';
+import { useRef, useCallback, useEffect, useState } from 'react';
 import { LoadingPage } from '@/components/LoadingPage/LoadingPage';
 import { randomizeProps } from '../utils/randomizeProps';
+import { AlertCard } from '@/components/AlertCard/AlertCard';
 
 export default function EditorPage() {
+  const [showEmptyAlert, setShowEmptyAlert] = useState(false);
+
   const { data: snapshot, isLoading } = trpc.drawing.getDrawing.useQuery();
+
   const editorRef = useRef<Editor | null>(null);
   const utils = trpc.useUtils();
 
@@ -20,12 +24,18 @@ export default function EditorPage() {
   });
 
   const handleSaveManually = () => {
-    if (!editorRef.current) return;
-    const snap = editorRef.current.store.getSnapshot();
+    const editor = editorRef.current;
+    if (!editor) return;
 
+    const currentShapes = editor.getCurrentPageShapes();
+    if (currentShapes.length === 0) {
+      setShowEmptyAlert(true);
+      return;
+    }
+    setShowEmptyAlert(false);
+    const snap = editor.store.getSnapshot();
     saveMutation.mutate(snap);
   };
-
   const handleReloadManually = async () => {
     if (!editorRef.current) return;
     const storedDrawing = await utils.drawing.getDrawing.fetch();
@@ -105,20 +115,17 @@ export default function EditorPage() {
       handleChangeShape={handleChangeShapeManually}
       isLoading={saveMutation.isPending}
     >
-      <div
-        className="flex flex-col"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: '248px',
-          right: 0,
-          bottom: 0,
-        }}
-      >
+      <div className="fixed inset-y-0 left-[248px] right-0 flex flex-col">
         <div style={{ position: 'fixed', inset: 0 }}>
           <Tldraw persistenceKey="editor-doc" onMount={handleMount} />
         </div>
       </div>
+
+      {showEmptyAlert && (
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+          <AlertCard title="Error" description="There must be a drawing to save" />
+        </div>
+      )}
     </EditorLayout>
   );
 }
