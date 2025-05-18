@@ -17,7 +17,7 @@ export default function EditorLayout({
   isLoading,
 }: EditorLayoutProps) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <header className=" border-b bg-white shadow-sm flex justify-start">
         <OptionMenu
           handleSave={handleSave}
@@ -26,8 +26,7 @@ export default function EditorLayout({
           isLoading={isLoading}
         />
       </header>
-
-      <main className="flex-1 relative overflow-hidden">{children}</main>
-    </>
+      <main className="flex-grow relative overflow-auto p-4">{children}</main>
+    </div>
   );
 }
