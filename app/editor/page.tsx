@@ -40,30 +40,46 @@ export default function EditorPage() {
 
     const selectedShapes = editor.getSelectedShapes();
     if (selectedShapes.length === 0) return;
-    console.log(selectedShapes);
 
     editor.run(() => {
       selectedShapes.forEach((shape) => {
         const randomColor = randomizeProps.color();
         const randomShape = randomizeProps.geoShape();
 
-        editor.updateShapes([
-          {
-            id: shape.id,
-            type: shape.type === 'geo' ? 'geo' : 'draw',
-
-            x: shape.x,
-            y: shape.y,
-            rotation: shape.rotation,
-            props: {
-              ...shape.props,
-              color: randomColor,
-              fill: 'solid',
-              dash: 'draw',
-              ...(shape.type === 'geo' ? { geo: randomShape } : {}),
+        if (shape.type === 'draw') {
+          editor.deleteShape(shape.id);
+          editor.createShapes([
+            {
+              type: 'geo',
+              x: shape.x,
+              y: shape.y,
+              rotation: shape.rotation,
+              props: {
+                color: randomColor,
+                fill: 'solid',
+                dash: 'draw',
+                geo: randomShape,
+              },
             },
-          },
-        ]);
+          ]);
+        } else if (shape.type === 'geo') {
+          editor.updateShapes([
+            {
+              id: shape.id,
+              type: shape.type,
+              x: shape.x,
+              y: shape.y,
+              rotation: shape.rotation,
+              props: {
+                ...shape.props,
+                color: randomColor,
+                fill: 'solid',
+                dash: 'draw',
+                geo: randomShape,
+              },
+            },
+          ]);
+        }
       });
     });
   };
