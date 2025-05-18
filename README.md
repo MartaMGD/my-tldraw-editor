@@ -6,8 +6,8 @@ Small app made using tldraw. It allows you to create, save and edit shapes and d
 - tRPC 11 + React Query 5
 - Tailwind CSS 4 + Radix UI + shadcn/ui
 - tldraw 3 
-- Zod 3 para validación
-- Prettier 3 · ESLint 9 para formateo y limpieza de código
+- Zod 3 for validation
+- Prettier 3 · ESLint 9 to keep code clean and solid
 
 🚀 How to start? 
 # 1 – install
