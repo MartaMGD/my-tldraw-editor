@@ -7,11 +7,11 @@ import 'tldraw/tldraw.css';
 import { trpc } from '@/app/api/trpc/_trpc/client';
 import { useRef, useCallback, useEffect } from 'react';
 import { LoadingPage } from '@/components/LoadingPage/LoadingPage';
+import { randomizeColor } from '../utils/randomizeColor';
 
 export default function EditorPage() {
   const { data: snapshot, isLoading } = trpc.drawing.getDrawing.useQuery();
   const editorRef = useRef<Editor | null>(null);
-
   const utils = trpc.useUtils();
 
   const saveMutation = trpc.drawing.saveDrawing.useMutation({
@@ -23,6 +23,7 @@ export default function EditorPage() {
   const handleSaveManually = () => {
     if (!editorRef.current) return;
     const snap = editorRef.current.store.getSnapshot();
+
     saveMutation.mutate(snap);
   };
 
@@ -32,6 +33,35 @@ export default function EditorPage() {
     if (storedDrawing) {
       editorRef.current.loadSnapshot(storedDrawing);
     }
+  };
+
+  const handleChangeShapeManually = () => {
+    const editor = editorRef.current;
+    if (!editor) return;
+
+    const selectedShapes = editor.getSelectedShapes();
+    if (selectedShapes.length === 0) return;
+
+    editor.run(() => {
+      selectedShapes.forEach((shape) => {
+        const randomColor = randomizeColor();
+        editor.updateShapes([
+          {
+            id: shape.id,
+            type: shape.type,
+            x: shape.x,
+            y: shape.y,
+            rotation: shape.rotation,
+            props: {
+              ...shape.props,
+              color: randomColor,
+              fill: 'solid',
+              dash: 'draw',
+            },
+          },
+        ]);
+      });
+    });
   };
 
   const handleMount = useCallback((editor: Editor) => {
@@ -52,6 +82,7 @@ export default function EditorPage() {
     <EditorLayout
       handleSave={handleSaveManually}
       handleLoad={handleReloadManually}
+      handleChangeShape={handleChangeShapeManually}
       isLoading={saveMutation.isPending}
     >
       <div

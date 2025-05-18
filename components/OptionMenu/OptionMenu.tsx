@@ -10,10 +10,16 @@ import { Button } from '../ui/button';
 interface OptionMenuProps {
   handleSave: () => void;
   handleLoad: () => void;
+  handleChangeShape: () => void;
   isLoading?: boolean;
 }
 
-export default function OptionMenu({ handleSave, handleLoad, isLoading }: OptionMenuProps) {
+export default function OptionMenu({
+  handleSave,
+  handleLoad,
+  handleChangeShape,
+  isLoading,
+}: OptionMenuProps) {
   return (
     <NavigationMenu className="relative z-2 left-90 top-0 cursor-pointer">
       <NavigationMenuList className="flex">
@@ -33,6 +39,14 @@ export default function OptionMenu({ handleSave, handleLoad, isLoading }: Option
               </Button>
               <Button onClick={handleLoad} variant="ghost" className="text-left cursor-pointer">
                 Load
+              </Button>
+
+              <Button
+                onClick={handleChangeShape}
+                variant="ghost"
+                className="text-left cursor-pointer"
+              >
+                Change shape
               </Button>
             </div>
           </NavigationMenuContent>
