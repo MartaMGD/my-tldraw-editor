@@ -21,37 +21,22 @@ export default function OptionMenu({
   isLoading,
 }: OptionMenuProps) {
   return (
-    <NavigationMenu className="relative z-2 left-90 top-0 cursor-pointer">
-      <NavigationMenuList className="flex">
-        <NavigationMenuItem>
-          <NavigationMenuTrigger asChild>
-            <Button variant="outline">Options</Button>
-          </NavigationMenuTrigger>
-          <NavigationMenuContent className="w-36 bg-white border rounded shadow-md p-1">
-            <div className="flex flex-col space-y-1">
-              <Button
-                onClick={handleSave}
-                disabled={isLoading}
-                variant="ghost"
-                className="text-left cursor-pointer"
-              >
-                Save
-              </Button>
-              <Button onClick={handleLoad} variant="ghost" className="text-left cursor-pointer">
-                Load
-              </Button>
+    <div className="w-full flex flex-row relative z-20 left-2 top-12 cursor-pointer gap-2">
+      <Button
+        onClick={handleSave}
+        disabled={isLoading}
+        variant="outline"
+        className="text-left cursor-pointer"
+      >
+        Save
+      </Button>
+      <Button onClick={handleLoad} variant="outline" className="text-left cursor-pointer">
+        Load
+      </Button>
 
-              <Button
-                onClick={handleChangeShape}
-                variant="ghost"
-                className="text-left cursor-pointer"
-              >
-                Change shape
-              </Button>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+      <Button onClick={handleChangeShape} variant="outline" className="text-left cursor-pointer">
+        Change
+      </Button>
+    </div>
   );
 }

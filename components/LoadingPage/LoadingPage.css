@@ -1,7 +1,7 @@
 .loader {
   width: 40px;
   height: 40px;
-  color: #f03355;
+  color: #ffd733;
   background:
     conic-gradient(from -45deg at top 20px left 50%, #0000, currentColor 1deg 90deg, #0000 91deg),
     conic-gradient(from 45deg at right 20px top 50%, #0000, currentColor 1deg 90deg, #0000 91deg),
