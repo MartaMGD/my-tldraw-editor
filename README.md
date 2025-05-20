@@ -52,7 +52,7 @@ To test it, you can:
  
 # 🤖 And... it has AI too!
  
-<img width="485" alt="Captura de pantalla 2025-05-20 a las 8 53 32" src="https://github.com/user-attachments/assets/458777d3-117b-4b34-ac4a-e0053c6d8f86" />
+<img width="335" alt="Captura de pantalla 2025-05-20 a las 9 02 17" src="https://github.com/user-attachments/assets/f5ed0996-17ab-47ec-a027-2c133d8139dc" />
 
 - Use the input located at the top right of the editor, enter a prompt and watch the magic happen.
 - Of course, you can save, load and change your AI generated image.
