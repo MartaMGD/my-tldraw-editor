@@ -1,13 +1,12 @@
 'use client';
-
-import EditorLayout from '@/components/Layouts/EditorLayout';
 import { Tldraw, Editor, TLAssetId } from 'tldraw';
 import 'tldraw/tldraw.css';
-import { trpc } from '@/app/api/trpc/_trpc/client';
 import { useRef, useCallback, useEffect, useState } from 'react';
-import { LoadingPage } from '@/components/LoadingPage/LoadingPage';
 import { randomizeProps } from '../utils/randomizeProps';
-import { AlertCard } from '@/components/AlertCard/AlertCard';
+import { trpc } from 'app/api/trpc/_trpc/client';
+import EditorLayout from '@components/Layouts/EditorLayout';
+import { AlertCard } from '@components/AlertCard/AlertCard';
+import { LoadingPage } from '@components/LoadingPage/LoadingPage';
 
 export default function EditorPage() {
   const [showEmptyAlert, setShowEmptyAlert] = useState(false);

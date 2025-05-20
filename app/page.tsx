@@ -1,8 +1,8 @@
 'use client';
 
-import Footer from '@/components/Footer/Footer';
-import { Button } from '@/components/ui/button';
-import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import Footer from '@components/Footer/Footer';
+import { Button } from '@components/ui/button';
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@components/ui/card';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {

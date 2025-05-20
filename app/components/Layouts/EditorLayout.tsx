@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import OptionMenu from '../OptionMenu/OptionMenu';
-import { GenerateImageInputForm } from '../ImageGeneratorForm/ImageGeneratorForm';
+import OptionMenu from '@components/OptionMenu/OptionMenu';
+import { GenerateImageInputForm } from '@components/ImageGeneratorForm/ImageGeneratorForm';
 
 interface EditorLayoutProps {
   children: ReactNode;

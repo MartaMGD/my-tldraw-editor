@@ -3,8 +3,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { Input } from '../ui/input';
-import { Button } from '../ui/button';
+import { Input } from '@components/ui/input';
+import { Button } from '@components/ui/button';
 
 export const ImageGeneratorForm = z.object({
   prompt: z.string().min(2, { message: 'Must not be empty' }),

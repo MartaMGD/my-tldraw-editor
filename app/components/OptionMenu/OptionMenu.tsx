@@ -1,11 +1,4 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from '@radix-ui/react-navigation-menu';
-import { Button } from '../ui/button';
+import { Button } from '@components/ui/button';
 
 interface OptionMenuProps {
   handleSave: () => void;
