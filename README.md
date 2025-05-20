@@ -51,16 +51,11 @@ To test it, you can:
 - Draw a shape
 - Click the shape
 - Click on button "Change shape" and, done!
- 
+
 # 🤖 And... it has AI too!
- 
+
 <img width="335" alt="Captura de pantalla 2025-05-20 a las 9 02 17" src="https://github.com/user-attachments/assets/f5ed0996-17ab-47ec-a027-2c133d8139dc" />
 
 - Use the input located at the top right of the editor, enter a prompt and watch the magic happen.
 - Of course, you can save, load and change your AI generated image.
 - NOTE: Please, take in mind that the app is using a free version of a Huggingface model, so API calls are a little bit limited.
-
-
-
-
-
