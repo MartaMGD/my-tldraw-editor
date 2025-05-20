@@ -53,6 +53,12 @@ To test it, you can:
 - Click on button "Change shape" and, done!
 
 # 🤖 And... it has AI too!
+## How do I set my token?
+- Go to https://huggingface.co/
+- Create an account
+- Go to your email and accept the account confirmation
+- Click on your profile image > go down to "Access Tokens"
+- Generate a type "Read" token and use it in the .env file
 
 <img width="335" alt="Captura de pantalla 2025-05-20 a las 9 02 17" src="https://github.com/user-attachments/assets/f5ed0996-17ab-47ec-a027-2c133d8139dc" />
 
