@@ -14,7 +14,9 @@ Small app made using tldraw. It allows you to create, save and edit shapes and d
 
 ## 1 – install
 
-npm install
+- npm install
+
+- cp .env.example .env (Use needed tokens)
 
 ## 2 – run it
 
@@ -30,7 +32,7 @@ npm dev # localhost:3000
 # 🎨 How to use:
 
 In this app you can draw shapes and manage them with a simple and intuitive menu located at the top.
-<img width="459" alt="Captura de pantalla 2025-05-18 a las 11 56 19" src="https://github.com/user-attachments/assets/f219a8c7-eb97-4dd5-a14d-d509e30498e4" />
+<img width="351" alt="Captura de pantalla 2025-05-20 a las 8 53 26" src="https://github.com/user-attachments/assets/74b4228c-4655-40d8-b90f-9a11304d89f6" />
 
 To test it, you can:
 
@@ -49,3 +51,16 @@ To test it, you can:
 - Draw a shape
 - Click the shape
 - Click on button "Change shape" and, done!
+ 
+# 🤖 And... it has AI too!
+ 
+<img width="335" alt="Captura de pantalla 2025-05-20 a las 9 02 17" src="https://github.com/user-attachments/assets/f5ed0996-17ab-47ec-a027-2c133d8139dc" />
+
+- Use the input located at the top right of the editor, enter a prompt and watch the magic happen.
+- Of course, you can save, load and change your AI generated image.
+- NOTE: Please, take in mind that the app is using a free version of a Huggingface model, so API calls are a little bit limited.
+
+
+
+
+
