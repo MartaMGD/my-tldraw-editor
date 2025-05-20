@@ -14,8 +14,9 @@ Small app made using tldraw. It allows you to create, save and edit shapes and d
 
 ## 1 – install
 
-npm install
-cp .env.example .env
+- npm install
+
+- cp .env.example .env (Use needed tokens)
 
 ## 2 – run it
 
