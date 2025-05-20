@@ -34,27 +34,29 @@ In this app you can draw shapes and manage them with a simple and intuitive menu
 
 To test it, you can:
 
-##· Save option:
+· Save option:
 
 - Draw a shape (by hand or using the geometric shapes)
 - Click on the button "Save"
 
-##· Reload option:
+· Reload option:
 
 - Clean the canvas or erase the shape
 - Click on button "Load" to load your saved drawing
 
-##· Change shape:
+· Change shape:
 
 - Draw a shape
 - Click the shape
 - Click on button "Change shape" and, done!
-
-## 🤖 And... it has AI too!
+ 
+# 🤖 And... it has AI too!
+ 
 <img width="485" alt="Captura de pantalla 2025-05-20 a las 8 53 32" src="https://github.com/user-attachments/assets/458777d3-117b-4b34-ac4a-e0053c6d8f86" />
 
 - Use the input located at the top right of the editor, enter a prompt and watch the magic happen.
 - Of course, you can save, load and change your AI generated image.
+- NOTE: Please, take in mind that the app is using a free version of a Huggingface model, so API calls are a little bit limited.
 
 
 
